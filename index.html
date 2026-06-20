@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wisdom Card</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body{
+        min-height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:linear-gradient(
+            135deg,
+            #C3C7F4,
+            #B784DB
+        );
+        padding:20px;
+    }
+
+    .quote-card{
+        width:450px;
+        max-width:90%;
+        background:#F8F7FC;
+        border:2px solid rgba(183,132,219,0.3);
+        border-radius:24px;
+        padding:40px;
+        text-align:center;
+        cursor:pointer;
+        transition:all 0.3s ease;
+        box-shadow:0 12px 30px rgba(0,0,0,0.12);
+    }
+
+    .quote-card:hover{
+        transform:translateY(-6px);
+        box-shadow:0 18px 40px rgba(0,0,0,0.15);
+    }
+
+    .icon{
+        font-size:48px;
+        color:#8E7DBE;
+        margin-bottom:20px;
+    }
+
+    .quote{
+        font-size:1.4rem;
+        line-height:1.8;
+        color:#5B4B78;
+        min-height:140px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    .counter{
+        margin-top:25px;
+        color:#8E7DBE;
+        font-weight:600;
+        letter-spacing:1px;
+    }
+
+    .hint{
+        margin-top:12px;
+        font-size:0.85rem;
+        color:#999;
+    }
+</style>
+</head>
+<body>
+
+<div class="quote-card" onclick="nextQuote()">
+    <div class="icon">✦</div>
+
+    <div class="quote" id="quote">
+        The sun shines regardless of whether the grass appreciates it or not.
+    </div>
+
+    <div class="counter" id="counter">
+        Quote 1 / 4
+    </div>
+
+    <div class="hint">
+        Click anywhere on the card
+    </div>
+</div>
+
+<script>
+const quotes = [
+    "The sun shines regardless of whether the grass appreciates it or not.",
+
+    "The river does not stop flowing because some refuse to drink from it.",
+
+    "A tree gives shade even to those who never planted it.",
+
+    "The moon does not seek applause before lighting the night."
+];
+
+let current = 0;
+
+function nextQuote(){
+    current = (current + 1) % quotes.length;
+
+    document.getElementById("quote").textContent = quotes[current];
+    document.getElementById("counter").textContent =
+        `Quote ${current + 1} / ${quotes.length}`;
+}
+</script>
+
+</body>
+</html>
